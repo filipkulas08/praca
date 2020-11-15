@@ -1,0 +1,53 @@
+<nz-table #basicTable [nzData]="words">
+    <thead>
+      <tr>
+        <th>Słowo angielskie</th>
+        <th>Słowo polskie</th>
+        <th>Nazwa kategorii </th>
+        <th>Nazwa poziomu</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.word.ang }}</td>
+        <td>{{ data.word.pl }}</td>
+        <td>{{ data.word.category.name }}</td>
+        <td>{{ data.word.category.level.name }}</td>
+        <td>
+          <button  (click)="EditRecord(data)" nz-button nzType="primary">Edytuj</button>
+          <nz-divider nzType="vertical"></nz-divider>
+          <button (click)= "Deleteemployee(data.id)" nz-button nzType="primary" nzDanger>Usuń</button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+<div class="col-md-3" *ngFor ="let item of words">
+        <div class="card">
+                <div class="row" *ngIf="item.isedit">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input nz-input placeholder="Wprowadź polskie słowo" [(ngModel)]="item.editEng" />
+                        </div>
+                        <div class="col-md-12">
+                            <input nz-input placeholder="Wprowadź polskie słowo" [(ngModel)]="item.editPl" />
+                        </div>
+                        <div class="col-md-12">
+                            <input nz-input placeholder="Wprowadź polskie słowo" [(ngModel)]="item.editCategory" />
+                        </div>
+                        <div class="col-md-12">
+                            <input nz-input placeholder="Wprowadź polskie słowo" [(ngModel)]="item.editLevel" />
+                        </div>
+                    </div>
+               
+
+                <a class="btn btn-danger btn-xs" (click)="item.isedit = false">Anuluj</a>
+                
+                <a class="btn btn-primary btn-xs" (click)="Updaterecord(item)">Zaaktualizuj</a>
+                </div>   
+            </div>
+        </div>
+    
+
+
+
+

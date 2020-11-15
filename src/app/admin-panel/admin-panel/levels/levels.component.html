@@ -1,0 +1,35 @@
+<nz-table #basicTable [nzData]="level">
+    <thead>
+      <tr>
+        <th>Nazwa poziomu</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.name }}</td>
+        <td>
+          <button  (click)="EditRecord(data)" nz-button nzType="primary">Edytuj</button>
+          <nz-divider nzType="vertical"></nz-divider>
+          <button (click)= "Deleteemployee(data.id)" nz-button nzType="primary" nzDanger>Usuń</button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+<div class="col-md-3" *ngFor ="let item of level">
+        <div class="card">
+                <div class="row" *ngIf="item.isedit">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input nz-input placeholder="Wprowadź nazwe poziomu" [(ngModel)]="item.editName" />
+                        </div>
+                    </div>
+                <a  class="btn btn-danger btn-xs" (click)="item.isedit = false">Anuluj</a>
+                <a  class="btn btn-primary btn-xs" (click)="Updaterecord(item)">Zaaktualizuj</a>
+                </div>   
+            </div>
+        </div>
+    
+
+
+
+

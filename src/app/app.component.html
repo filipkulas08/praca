@@ -1,0 +1,110 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+            nzCollapsible
+            nzWidth="256px"
+     >
+    <div class="sidebar-logo">
+      <span>
+        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+        <h1>Aplikacja</h1>
+      </span>
+      
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li *ngIf="user && activeUser[0].role ==='admin'" nz-submenu nzOpen nzTitle="Panel Admina" nzIcon="dashboard">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/admin/words">Słowa</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/admin/addWord">Dodaj słowo </a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/admin/category">Kategorie </a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/admin/addCategory">Dodaj kategorie </a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/admin/levels">Poziomy </a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/admin/addLevels">Dodaj poziomy </a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="Nauka" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/learn/word">Nauka słów </a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/learn/test">  Test </a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/admin/dupa">  Gramatyka? </a>
+          </li>
+          <li nz-submenu nzOpen nzTitle="Krzyzówki">
+            <ul>
+              <li nz-menu-item nzMatchRouter>
+                <a routerLink="/learn/crossword-human">Człowiek</a>
+              </li>
+              <li nz-menu-item nzMatchRouter>
+                <a routerLink="/admin/addWord">xyz </a>
+              </li>
+              
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+<button nz-button nzType="primary"  *ngIf="!user" (click)="showModalRegister()">Register</button>
+<button nz-button nzType="primary" *ngIf="user" (click)="logout()">Logout</button>
+<button nz-button nzType="primary" *ngIf="!user" (click)="showModalLogin()">Login</button>
+<nz-modal 
+  [(nzVisible)]="isVisibleLogin"
+  [nzTitle]="modalTitleLogin"
+  [nzContent]="modalContentLogin"
+  [nzFooter]="modalFooterLogin"
+  (nzOnCancel)="handleCancelLogin()"
+>
+  <ng-template #modalTitleLogin>
+    Logowanie
+  </ng-template>
+  <ng-template #modalContentLogin>
+    <app-login>
+    </app-login>
+  </ng-template>
+  <ng-template #modalFooterLogin>
+  </ng-template>
+</nz-modal>
+
+<nz-modal 
+  [(nzVisible)]="isVisibleRegister"
+  [nzTitle]="modalTitleRegister"
+  [nzContent]="modalContentRegister"
+  [nzFooter]="modalFooterRegister"
+  (nzOnCancel)="handleCancelRegister()"
+>
+  <ng-template #modalTitleRegister>
+    Rejestracja
+  </ng-template>
+  <ng-template #modalContentRegister>
+    <app-registration>
+    </app-registration>
+  </ng-template>
+  <ng-template #modalFooterRegister>
+  </ng-template>
+</nz-modal>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+        
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

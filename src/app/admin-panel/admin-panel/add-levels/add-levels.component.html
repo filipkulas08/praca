@@ -1,0 +1,13 @@
+
+    <div class="container">
+        <div class="form-group">
+            <input nz-input placeholder="Wprowadź nazwę poziomu" [(ngModel)]="levelName" />
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary"  (click)="CreateRecord()" >Dodaj poziom</button>
+        </div>
+        <div class="form-group">
+            <h4><b>{{message}}</b></h4>
+        </div>
+        
+    </div>

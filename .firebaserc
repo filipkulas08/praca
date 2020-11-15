@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "baza-danych-12f85": {
+      "hosting": {
+        "english-learning-ap": [
+          "baza-danych-12f85"
+        ]
+      }
+    }
+  }
+}
